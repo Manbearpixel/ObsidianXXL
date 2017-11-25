@@ -36,7 +36,6 @@ app.get('*', function(req, res) {
 
 // *** sync database + start server *** //
 models.sequelize.sync().then(function() {
-  app.on('error', onError);
   app.on('connection', onListening);
   server = app.listen(appPort, 'localhost', () => {
     let addr = server.address();
