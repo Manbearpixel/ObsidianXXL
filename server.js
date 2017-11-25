@@ -36,7 +36,7 @@ app.get('*', function(req, res) {
 
 // *** sync database + start server *** //
 models.sequelize.sync().then(function() {
-  server = app.listen(appPort, 'localhost', () => {
+  server = app.listen(appPort, () => {
     let addr = server.address();
     if (typeof addr === 'object') {
       addr = `${addr.address}:${addr.port}`;
