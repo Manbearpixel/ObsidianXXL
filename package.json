@@ -13,15 +13,29 @@
   "bugs": {
     "url": "https://github.com/Manbearpixel/ObsidianXXL/issues"
   },
-  "homepage": "hhttps://github.com/Manbearpixel/ObsidianXXL#readme",
+  "homepage": "https://github.com/Manbearpixel/ObsidianXXL#README",
   "scripts": {
-    "start": "node server.js"
+    "start": "forever start ./forever/production.json",
+    "stop": "forever stop ./forever/production.json"
   },
   "dependencies": {
+    "async": "^2.5.0",
     "body-parser": "^1.18.2",
-    "express": "^4.16.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
     "fs": "0.0.1-security",
+    "minimist": "^1.2.0",
+    "moment": "^2.19.2",
+    "morgan": "^1.9.0",
+    "node-json-rpc2": "^1.1.0",
     "path": "^0.12.7",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "request": "^2.83.0",
+    "sequelize": "^4.18.0",
+    "sequelize-cli": "^3.0.0",
+    "systeminformation": "^3.32.4",
     "underscore": "^1.8.3"
   }
 }
