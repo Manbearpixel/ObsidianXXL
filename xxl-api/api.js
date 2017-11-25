@@ -37,9 +37,14 @@ app.use(function(req, res, next) {
 });
 
 // *** main routes *** //
-//  -> localhost:xxxx/crawl/index/xxx
-app.use('/', commonRoutes);
-app.use('/', serverRoutes);
+if (process.env.NODE_ENV === 'development') {
+  app.use('/api', commonRoutes);
+  app.use('/api', serverRoutes);
+}
+else {
+  app.use('/', commonRoutes);
+  app.use('/', serverRoutes);
+}
 
 // *** handle favicon request *** //
 app.get('/favicon.ico', function(req, res) {

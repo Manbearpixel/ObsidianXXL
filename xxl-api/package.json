@@ -5,8 +5,8 @@
   "main": "bin/www",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ODN_DEBUG=false node ./bin/www",
-    "start-debug": "ODN_DEBUG=true node ./bin/www"
+    "start": "NODE_ENV=development ODN_DEBUG=false PORT=4201 node ./bin/www",
+    "start-debug": "NODE_ENV=development ODN_DEBUG=true PORT=4201 node ./bin/www"
   },
   "repository": {
     "type": "git",
