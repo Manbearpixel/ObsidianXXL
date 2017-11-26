@@ -1,0 +1,3 @@
+[submodule "xxl-webapp"]
+	path = xxl-webapp
+	url = git@github.com:Manbearpixel/xxl-webapp.git
