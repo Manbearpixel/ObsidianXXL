@@ -1,27 +1,25 @@
 // *** main dependencies *** //
-var express       = require('express');
-var path          = require('path');
-var logger        = require('morgan');
-var cookieParser  = require('cookie-parser');
-var bodyParser    = require('body-parser');
-var corsOpts      = require('./config/cors-opts');
-var cors          = require('cors');
-var pjson         = require('./package.json');
+let express       = require('express');
+let path          = require('path');
+let logger        = require('morgan');
+let cookieParser  = require('cookie-parser');
+let bodyParser    = require('body-parser');
+let cors          = require('./config/cors');
+let pjson         = require('./package.json');
 
 // *** routes *** //
 let serverRoutes = require('./routes/server');
 let commonRoutes = require('./routes/common');
 
 // *** express instance *** //
-var app = express();
+let app = express();
 
 // *** cors middleware *** //
-app.use(cors(corsOpts))
+app.use(cors)
 
 // *** config middleware *** //
 app.use(logger('dev'));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, '../client')));
 
 /* Configure bodyParser to handle data from POST/PUT */
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -61,7 +59,7 @@ app.get('/ping', function(req, res) {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

@@ -2,7 +2,7 @@
 var cors = require('cors');
 
 // *** cors setup *** //
-var whitelist = ['http://localhost:4200'];
+var whitelist   = ['http://localhost:4200'];
 var corsOptions = {
   origin: function (origin, callback) {
     // Accept all requests... for now...
@@ -16,4 +16,4 @@ var corsOptions = {
   }
 }
 
-module.exports = corsOptions;
+module.exports = cors(corsOptions);

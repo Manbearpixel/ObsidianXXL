@@ -113,3 +113,10 @@ To use these commands you will need to first connect to the `odn_alpha1` databas
 ```
 \connect odn_beta
 ```
+
+
+##### :// NodeJS + NPM
+The ObsidianXXL leverages the power of JavaScript and as such will require NodeJS and the package manager NPM to install necessary project dependencies. If you have installed the XXL-API NodeJS and NPM should already be available. Please refer to the XXL-API for installation instructions.
+
+##### :// PostgreSQL
+For storage and future features, the ObsidianXXL relies on PostgreSQL. If you have installed the XXL-API NodeJS and NPM should already be available. Please refer to the XXL-API for installation instructions.

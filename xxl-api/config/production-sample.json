@@ -1,0 +1,14 @@
+{
+  "Database": {
+    "config": {
+      "host":       "localhost",
+      "port":       "5432",
+      "username":   "sqljs",
+      "password":   "foobar123",
+      "dbName":     "odn_beta"
+    },
+    "options": {
+      "dialect": "postgres"
+    }
+  }
+}
