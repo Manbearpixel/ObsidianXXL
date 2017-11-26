@@ -5,6 +5,8 @@
   "main": "bin/www",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "echo \"Migrating Database Details\" && sequelize db:migrate",
+    "cleanup": "echo \"Removing Database Details\" && sequelize db:migrate:undo:all",
     "start": "NODE_ENV=development ODN_DEBUG=false PORT=4201 node ./bin/www",
     "start-debug": "NODE_ENV=development ODN_DEBUG=true PORT=4201 node ./bin/www"
   },

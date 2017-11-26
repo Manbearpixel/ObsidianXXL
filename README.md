@@ -44,22 +44,26 @@ If using the GUI, you will simply need to start the Obsidian-QT application.
 ##### obsidiand binary file
 If you built the `obsidiand` binary file you will need to start the process back up again. To run `obsidiand` in the background, you can pass the `daemon` flag to daemonize the program: `obsidiand -daemon`.
 
-### Start the ObsidianXXL Webapp
-To start the ObsidianXXL Webapp simply run the following command from the ObsidianXXL project root:
+## ObsidianXXL Commands
+All of these commands are run using `npm` from the ObsidianXXL project root.
+
+##### :// Start ObsidianXXL
 ```
 npm run start
 ```
 
-## Stopping
-### Stop Obsidian Blockchain
-##### Obsidian-QT
-If using the GUI, you will simply need to quit the Obsidian-QT application.
-
-##### obsidiand binary file
-If you built the `obsidiand` binary file you can stop it by sending the `stop` command to the process: `obsidiand stop`.
-
-### Stop the ObsidianXXL Webapp
-To stop the ObsidianXXL Webapp simply run the following command from the ObsidianXXL project root:
+##### :// Stop ObsidianXXL
 ```
 npm run stop
+```
+
+##### :// Update ObsidianXXL
+```
+npm run update
+```
+
+##### :// Setup ObsidianXXL Database
+This command will prompt a series of questions to setup the Postgres Config file and create the Postgres User and Database.
+```
+npm run setup
 ```
