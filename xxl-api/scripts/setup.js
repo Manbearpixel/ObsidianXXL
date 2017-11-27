@@ -5,7 +5,7 @@ const fs        = require('fs');
 const System    = require('systeminformation');
 const { exec }  = require('child_process');
 
-let xxlAPIConfigPath = './xxl-api/config/';
+let xxlAPIConfigPath = './config/';
 let xxlAPIConfigFile = `${xxlAPIConfigPath}production.json`;
 
 let configQuestions = [
