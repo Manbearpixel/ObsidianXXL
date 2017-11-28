@@ -8,6 +8,7 @@ exec(`sequelize db:migrate`, (err, stdout, stderr) => {
   // node couldn't execute the command
   if (err) {
     console.log('ERROR: Unable to start Migrate ObsidianXXL-API');
+    console.log(err);
     return;
   }
 

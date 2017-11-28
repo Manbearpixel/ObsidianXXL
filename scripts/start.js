@@ -10,6 +10,7 @@ exec(`PORT=${Port} NODE_CONFIG_DIR=${ConfigDir} NODE_ENV=${NodeEnv} forever star
 
   // node couldn't execute the command
   if (err) {
+    console.log(err);
     console.log('ERROR: Unable to start ObsidianXXL');
     return;
   }
@@ -17,5 +18,5 @@ exec(`PORT=${Port} NODE_CONFIG_DIR=${ConfigDir} NODE_ENV=${NodeEnv} forever star
   // the *entire* stdout and stderr (buffered)
   // console.log(`stdout: ${stdout}`);
   // console.log(`stderr: ${stderr}`);
-  console.log(':// ObsidianXXL [Started]');
+  console.log(`:// ObsidianXXL [Started] ... Listening on :${Port}`);
 });

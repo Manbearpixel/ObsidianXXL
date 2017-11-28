@@ -3,19 +3,17 @@ const fs        = require('fs');
 const path      = require('path');
 const Sequelize = require('sequelize');
 const env       = process.env.NODE_ENV || 'development';
-const config    = require('config');
-const pgConfig  = config.get('Database.config');
-const pgOpts    = config.get('Database.options');
+const config    = require(__dirname + '/../config/config.js')[env];
 
 // *** load database config *** //
 let db        = {};
 let basename  = path.basename(__filename);
 
 // *** set sequelize *** //
-let sequelize = new Sequelize(pgConfig.dbName, pgConfig.username, pgConfig.password, {
-  host:    pgConfig.host,
-  port:    pgConfig.port,
-  dialect: pgOpts.dialect
+let sequelize = new Sequelize(config.database, config.username, config.password, {
+  host:    config.host,
+  port:    config.port,
+  dialect: config.dialect
 });
 
 fs.readdirSync(__dirname)

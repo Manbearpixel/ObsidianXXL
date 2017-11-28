@@ -16,14 +16,13 @@
   "homepage": "https://github.com/Manbearpixel/ObsidianXXL#README",
   "scripts": {
     "start": "scripts/start.js",
+    "start-local": "PORT=3000 scripts/start.js",
     "stop": "scripts/stop.js",
-    "update": "scripts/update.js",
-    "setup": "scripts/setup-postgres.js"
+    "update": "scripts/update.js"
   },
   "dependencies": {
     "async": "^2.5.0",
     "body-parser": "^1.18.2",
-    "config": "^1.28.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "express": "^4.16.2",

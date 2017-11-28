@@ -5,16 +5,10 @@ const Port      = process.env.PORT || 4201;
 const NodeEnv   = process.env.NODE_ENV || 'development';
 const OdnDebug  = process.env.ODN_DEBUG || 'false';
 
-exec(`NODE_ENV=${NodeEnv} ODN_DEBUG=${OdnDebug} PORT=${Port} node ./bin/www`, (err, stdout, stderr) => {
+console.log(`:// ObsidianXXL-API [Starting] ... Listening on :${Port}`);
+if (OdnDebug == 'true') {
+  console.log('[x] Debug Mode Activen\n');
+}
+console.log('-- This is an active process, use ^C to terminate --');
 
-  // node couldn't execute the command
-  if (err) {
-    console.log('ERROR: Unable to start ObsidianXXL-API');
-    return;
-  }
-
-  // the *entire* stdout and stderr (buffered)
-  // console.log(`stdout: ${stdout}`);
-  // console.log(`stderr: ${stderr}`);
-  console.log(':// ObsidianXXL-API [Started]');
-});
+exec(`NODE_ENV=${NodeEnv} ODN_DEBUG=${OdnDebug} PORT=${Port} node ./bin/www`);

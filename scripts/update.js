@@ -7,6 +7,7 @@ exec(`git pull && npm install`, (err, stdout, stderr) => {
   // node couldn't execute the command
   if (err) {
     console.log('ERROR: Unable to update ObsidianXXL');
+    console.log(err);
     return;
   }
 
