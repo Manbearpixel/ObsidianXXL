@@ -20,7 +20,7 @@ rpcport=8332
 ```
 
 ##### :// XXL-API
-The XXL-API is an interface layer separating the ObsidianXXL Webapp and your running Obsidian Blockchain. The XXL-API has it's own prerequisites and should be installed prior to ObsidianXXL. Please refer to the XXL-API `README` for more information.
+The XXL-API is an interface layer separating the ObsidianXXL Webapp and your running Obsidian Blockchain. The XXL-API has it's own prerequisites/guide and should be installed prior to ObsidianXXL. Please refer to the [XXL-API `README`](./xxl-api/README.md) for more information.
 
 ##### :// Forever
 Forever is a Process Manager to run the ObsidianXXL Webapp in production, essentially a high-level container for ObsidianXXL to run. We have opted for Forever due to the simplicity of use. The following command will install it in your environment.
