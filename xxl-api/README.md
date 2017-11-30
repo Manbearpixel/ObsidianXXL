@@ -41,12 +41,11 @@ sudo apt-get install postgresql postgresql-contrib
 ```
 
 ### :// Obsidian Blockchain
-Since the XXL and XXL-API utilize and display information related to your Obsidian Node and the network, the Obsidian Blockchain is a required piee that must be installed and running in the background. You can use the [Obsidian-QT Packaged Release](https://github.com/obsidianproject/Obsidian-Qt/releases) or the binary file `obsidiand` which you can create from the source. If you are setting up `obsidiand` from the source we have a Wiki Guide available on Github. There are also community-made videos available to help set up as well:
+Since the XXL and XXL-API utilize and display information related to your Obsidian Node and the network, the Obsidian Blockchain is a required piee that must be installed and running in the background. You can use the [Obsidian-QT Packaged Release](https://github.com/obsidianproject/Obsidian-Qt/releases) or the binary file `obsidiand` which you can create from the source. If you are setting up `obsidiand` from the source we have guides available on our [Github Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki/Obsidian-QT-%7C-Wiki-of-Obsidian-(ODN)-%E2%80%93-Cryptocurrency-&-Secure-Anonymous-Messaging#installing-obsidiand-source):
 - [Ubuntu Manual Setup via Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki/Setting-up-a-VPS-to-stake-your-Obsidian!-~@Pixxl)
     - Explains how to set up a Virtual Private Server *(VPS)* remotely
     - Setup `obsidiand` on Ubuntu 16.04 remotely
-- [Video: Setting up on Ubuntu](https://www.youtube.com/watch?v=bVIrlmWFlOE) credit to **CryptoWell**
-- [Raspberry-Pi Setup via Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki/Raspberry-Pi-Setup)
+- [Raspberry-Pi Setup via Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki/Raspberry-Pi-Obsidiand-Setup)
 
 ## Installation
 After NodeJS and Postgres are both available on your machine you should now be able to download the XXL-API server. The XXL-API server is bundled together with the XXL so downloading the XXL itself is all that is required.
@@ -124,9 +123,12 @@ rpcport=8332
 ```
 
 ## Running
-The Obsidian Blockchain must be running in the background, either as a Wallet App or via the `obsidiand` process. You must also make sure that you have configured your `obsidian.conf` file with specific settings to ensure everything works smoothly. If you have modified your Obsidian Blockchain config file you must reset your application/process first.
+Please ensure the following steps are done:
+1. The Obsidian Blockchain is running in the background, either as a Wallet App or via the `obsidiand` process. 
+2. You have modified the `obsidian.conf` file with specific settings listed above.
+  - *If you have modified your Obsidian Blockchain config file you must reset your application/process first!*
 
-If you are only running the XXL-API for a production/live environment then there is nothing else you need to do here! Please continue on with the README for the XXL *(which is a lot shorter!)*.
+If you are only running the XXL-API for a **production/live environment** then there is nothing else you need to do here! Please continue on with the [XXL README](../README.md) *(which is a lot shorter!)*.
 
 ## Development
 << Section WIP >>
