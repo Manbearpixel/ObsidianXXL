@@ -1,28 +1,20 @@
 # ObsidianXXL
 ###### v0.1.1 (BETA)
 ---
-The ObsidianXXL is a modular dashboard for MasterNodes on the Obsidian Blockchain. With a straight forward setup, holders of MasterNodes will be able to easily view their Node information in a beautiful and clean interface. The ObsidianXXL includes an internal API layer which works as a proxy between the Webapp and your running Obsidian Blockchain.
+The ObsidianXXL *(XXL)* is a modular dashboard for MasterNodes *(MN)* on the Obsidian Blockchain. With a straight forward setup, holders of MasterNodes will be able to easily view their Node information in a beautiful and clean interface. The ObsidianXXL includes an internal API layer, *XXL-API*, which works as a proxy between this Webapp and your running Obsidian Blockchain.
 
-Unfortunately we are still streamlining an automated installation process, but in the meantime please read through the ObsidianXXL and XXL-API README.
+A more streamlined installation process is still being sorted out as we are growing to understand our userbase and which platforms will need support. Currently, installation has been verified on MacOS and Ubuntu 16.04. In order of importance, the [XXL-API](./xxl-api) should be installed first.
 
 ## Prerequisites
-##### :// Obsidian Wallet/Node
-As the ObsidianXXL utilizes the Obsidian Blockchain you will need to ensure that you have properly installed either the Graphic Interface `Obsidian-QT` or the binary file `obsidiand` and you have the following information set in your `obsidian.conf` file which will be located in your Obsidian Folder.
-- On MacOS, this is found in `~/Library/Application\ Support/ObsidianQT/`
-- On Ubuntu/Linux, it should be found within `~/.obsidian/`
+*Important project dependencies such as NodeJS are installed after going through the entire [XXL-API `README`](./xxl-api/README.md)!*
 
-##### `obsidian.conf`
-```
-server=1
-rpcuser=me
-rpcpassword=123
-rpcport=8332
-```
+### :// Obsidian Wallet/Node
+If you have not yet installed either the [Obsidian-QT Wallet](https://github.com/obsidianproject/Obsidian-Qt/releases) or the `obsidiand` binary file from source. For more information, please view our [Github Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki).
 
-##### :// XXL-API
+### :// XXL-API
 The XXL-API is an interface layer separating the ObsidianXXL Webapp and your running Obsidian Blockchain. The XXL-API has it's own prerequisites/guide and should be installed prior to ObsidianXXL. Please refer to the [XXL-API `README`](./xxl-api/README.md) for more information.
 
-##### :// Forever
+### :// Forever
 Forever is a Process Manager to run the ObsidianXXL Webapp in production, essentially a high-level container for ObsidianXXL to run. We have opted for Forever due to the simplicity of use. The following command will install it in your environment.
 ```
 npm install forever -g
@@ -35,14 +27,24 @@ npm install
 ```
 
 ## Running
-### Start Obsidian Blockchain
-If you have adjusted the `obsidian.conf` file while the Obsidian Blockchain was running in the background, you will need to restart it. This can be done by closing the application/process and starting it up again.
+### :// 1 - Start Obsidian Blockchain
+Please ensure the following steps are done:
+1. The Obsidian Blockchain is running in the background, either as a Wallet App or via the `obsidiand` process. 
+2. You have modified the `obsidian.conf` file with specific settings listed above.
+  - *If you have modified your Obsidian Blockchain config file you must reset your application/process first!*
 
 ##### Obsidian-QT
 If using the GUI, you will simply need to start the Obsidian-QT application.
 
 ##### obsidiand binary file
 If you built the `obsidiand` binary file you will need to start the process back up again. To run `obsidiand` in the background, you can pass the `daemon` flag to daemonize the program: `obsidiand -daemon`.
+
+### :// 2 - Start ObsidianXXL
+Run the following command from the ObsidianXXL project root:
+```
+npm run start
+```
+If no issues arise you should see a message in your shell that the server is running on port `:80`, this means you should be able to see your dashboard running by entering the IP address of your machine.
 
 ## ObsidianXXL Commands
 All of these commands are run using `npm` from the ObsidianXXL project root.
@@ -60,10 +62,4 @@ npm run stop
 ##### :// Update ObsidianXXL
 ```
 npm run update
-```
-
-##### :// Setup ObsidianXXL Database
-This command will prompt a series of questions to setup the Postgres Config file and create the Postgres User and Database.
-```
-npm run setup
 ```
