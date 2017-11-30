@@ -1,15 +1,15 @@
 {
   "name": "XXL-API",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An API layer for the ObsidianXXL WebApp -- XXL-API",
   "main": "bin/www",
   "scripts": {
-    "setup":        "scripts/setup.js",
-    "setup-dev":    "NODE_ENV=development scripts/setup.js",
-    "migrate":      "scripts/migrate.js",
-    "cleanup":      "scripts/cleanup.js",
-    "start":        "scripts/start.js",
-    "start-debug":  "ODN_DEBUG=true scripts/start.js"
+    "setup": "scripts/setup.js",
+    "setup-dev": "NODE_ENV=development scripts/setup.js",
+    "migrate": "scripts/migrate.js",
+    "cleanup": "scripts/cleanup.js",
+    "start": "scripts/start.js",
+    "start-debug": "ODN_DEBUG=true scripts/start.js"
   },
   "repository": {
     "type": "git",

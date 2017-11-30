@@ -6,6 +6,7 @@ const ConfigDir = process.env.CONFIG_DIR || './xxl-api/config';
 const NodeEnv   = process.env.NODE_ENV || 'production';
 const UID       = 'obsidian-xxl';
 
+// TODO: Migrate to forever config
 exec(`PORT=${Port} NODE_CONFIG_DIR=${ConfigDir} NODE_ENV=${NodeEnv} forever start -a --uid=${UID} server.js`, (err, stdout, stderr) => {
 
   // node couldn't execute the command
