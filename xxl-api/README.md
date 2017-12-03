@@ -1,5 +1,5 @@
 # ObsidianXXL-API
-###### v0.1.0 (BETA)
+###### v0.1.1 (BETA)
 ---
 The ObsidianXXL-API *(XXL-API)* is a standalone layer for the ObsidianXXL *(XXL)* Dashboard Web-Application. The XXL-API acts as middleware between the running Obsidian Blockchain and the XXL, as well as a few other additional features. This layer is JavaScript-centric and utilizes the NodeJS environment and Express framework for running a server with accessible routes.
 
@@ -52,9 +52,9 @@ After NodeJS and Postgres are both available on your machine you should now be a
 
 The following installation procedures should be done within your command prompt interface for your system. For example, MacOS has the `Terminal` application. Please determine what yours is and use it. If you require help please reach out to the Obsidian Dev team.
 
-### :// Download XXL Project
+### :// Download ObsidianXXL Project
 ```
-git clone git@github.com:obsidianproject/ObsidianXXL.git
+git clone https://github.com/obsidianproject/ObsidianXXL.git
 ```
 
 ### :// Install Project Dependencies
