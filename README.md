@@ -21,7 +21,7 @@ npm install forever -g
 ```
 
 ## Installation
-Running the below command from within the ObsidianXXL project folder will look at the `package.json` manifest and install the required dependencies. If you do not have the ObsidianXXL project folder than you have not read through and setup the [XXL-API `README`](./xxl-api/README.md) and must do that first!
+Running the below command from within the ObsidianXXL project folder will look at the `package.json` manifest and install the required dependencies. If you do not have the ObsidianXXL project folder then you have not read through and setup the [XXL-API `README`](./xxl-api/README.md) and must do that first!
 ```
 npm install
 ```
