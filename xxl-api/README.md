@@ -37,7 +37,7 @@ To install Postgres on your Mac you can use either [Brew](https://brew.sh/) to i
 Install PostgreSQL through the standard `apt-get` package manager:
 ```
 sudo apt-get update
-sudo apt-get install postgresql postgresql-contrib
+sudo apt-get install -y postgresql postgresql-contrib
 ```
 
 ### :// Obsidian Blockchain
