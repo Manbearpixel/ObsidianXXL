@@ -1,115 +1,169 @@
-# ObsidianNodeJSAPI
-###### v0.0.4 (BETA)
+# ObsidianXXL-API
+###### v0.1.1 (BETA)
 ---
-This project is for the active development of an API layer to allow communication and indexing of the Obsidian Blockchain. The codebase is JavaScript-centric and will be utilizing the NodeJS environment and Express framework for running a server with accessible routes.
+The ObsidianXXL-API *(XXL-API)* is a standalone layer for the ObsidianXXL *(XXL)* Dashboard Web-Application. The XXL-API acts as middleware between the running Obsidian Blockchain and the XXL, as well as a few other additional features. This layer is JavaScript-centric and utilizes the NodeJS environment and Express framework for running a server with accessible routes.
 
 ## Prerequisites
-##### NodeJS Installation
-1. [NodeJS Download Mac/Windows](https://nodejs.org/en/download/)
-2. [NodeJS Download Ubuntu](https://github.com/nodesource/distributions#installation-instructions)
+### :// Git
+Git is a source control management tool for organizing projects and files. Git should already be available on all major systems, but if it isn't please refer to the [Git Download Page](https://git-scm.com/downloads) to ensure it is installed.
 
-###### Installing latest NodeJS on Ubuntu 16.04
+### :// NodeJS + NPM
+The NodeJS environment is available on all major Operating Systems. MacOS and Windows support packaged installers via the [NodeJS Download Page](https://nodejs.org/en/download/). There are binary files available for linux as well. Generally, NodeJS should also install NPM as well.
+#### nodejs.Ubuntu >= 16.04
+If you are setting the XXL-API up on an Ubuntu OS you can use the instructions below to install NodeJS and the accompanying Node Project Manager *(NPM)*.
+
 ```
-# Install Node.js v9.x Using Ubuntu
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
-
-After installing NodeJS you may need to symlink it properly or you might see an error such as:
+Test out your installation by running `node -v`, if you see a warning such as:
 ```
 /usr/bin/env: ‘node’: No such file or directory
 ```
 
-To symlink `nodejs` run the following command:
+You will need to sumlink `nodejs`:
 ```
 ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
-##### PostgreSQL Installation
-
-###### Installing PostgreSQL on Mac
-I recommend the simplest route which is via the [Postgres.app](http://postgresapp.com/). You can of course install from source or via [Homebrew](https://www.postgresql.org/download/macosx/).
-
+### :// Postgres
+PostgreSQL or Postgres, is the database management system the XXL-API utilizes to store historical or informative details on your machine. Postgres is available on all major systems.
+#### pg.Windows
+Please see the downloadable Postgres installer on the [Postgres Downloads Page](https://www.postgresql.org/download/windows/).
+#### pg.Mac
+To install Postgres on your Mac you can use either [Brew](https://brew.sh/) to install from source or MacOS [Postgres.app](http://postgresapp.com/). For ease of use it may be good to just use the Application.
+#### pg.Ubuntu >= 16.04
 ###### Installing PostgreSQL on Ubuntu 16.04
-Install PostgreSQL through the `apt-get` package manager:
+Install PostgreSQL through the standard `apt-get` package manager:
 ```
 sudo apt-get update
-sudo apt-get install postgresql postgresql-contrib
+sudo apt-get install -y postgresql postgresql-contrib
 ```
+
+### :// Obsidian Blockchain
+Since the XXL and XXL-API utilize and display information related to your Obsidian Node and the network, the Obsidian Blockchain is a required piece that must be installed and running in the background. You can use the [Obsidian-QT Packaged Release](https://github.com/obsidianproject/Obsidian-Qt/releases) or the binary file `obsidiand` which you can create from the source. If you are setting up `obsidiand` from the source we have guides available on our [Github Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki):
+- [Ubuntu Manual Setup via Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki/Setting-up-a-VPS-to-stake-your-Obsidian!-~@Pixxl)
+    - Explains how to set up a Virtual Private Server *(VPS)* remotely
+    - Setup `obsidiand` on Ubuntu 16.04 remotely
+- [Raspberry-Pi Setup via Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki/Raspberry-Pi-Obsidiand-Setup)
 
 ## Installation
-Once you have both NodeJS and PostgreSQL available and running on your machine you can begin installing the rest of this application. First you will need to download the repo, then setup the PostgreSQL user/database, and finally install the Node dependencies used in this project.
+After NodeJS and Postgres are both available on your machine you should now be able to download the XXL-API server. The XXL-API server is bundled together with the XXL so downloading the XXL itself is all that is required.
 
-#### Download Repo
-```
-$ git clone git@github.com:Manbearpixel/ObsidianNodeJSAPI.git
-```
+The following installation procedures should be done within your command prompt interface for your system. For example, MacOS has the `Terminal` application. Please determine what yours is and use it. If you require help please reach out to the Obsidian Dev team.
 
-#### Setup PostgreSQL User
-To enter the `psql` interface you can either run `psql` or `sudo -u postgres psql` if on Ubuntu. This will switch to the `postgres` user and enter the `psql` interface.
+### :// Download ObsidianXXL Project
 ```
-# Enter the PSQL command line:
-sudo -u postgres psql
-# Create the sqljs role/user:
-CREATE ROLE sqljs WITH LOGIN PASSWORD 'foobar123';
-# Create the odn_beta database and set the owner to sqljs
-CREATE DATABASE odn_beta OWNER sqljs;
+git clone https://github.com/obsidianproject/ObsidianXXL.git
 ```
 
-#### Install NodeJS Dependencies
-Running the below command from within the project folder will look at the `package.json` manifest and install dependencies listed.
+### :// Install Project Dependencies
+Switch to the folder/project you have just downloaded and run the following commands with `npm`. These should install the necessary files to run properly:
 ```
+cd ObsidianXXL
+npm install -g sequelize
+npm install -g sequelize-cli
+npm install -g pg pg-hstore
 npm install
 ```
 
-SequelizeJS is the ORM this API uses to manage interactions with the PostgreSQL database. You will need to install `sequelize-cli` globally via NPM to migrate the schemas.
+## Setting Up
+### :// Run Config Setup Script
+The XXL-API includes various commands to simplify interactions. One of which is a `setup` command to initialize your XXL-API settings. At this time **Mac OS and Ubuntu** are the only confirmed supported environments to use this interactive script. If you would like for us to support your system please let the Obsidian Dev team know or submit a [Github Issue](https://github.com/Manbearpixel/ObsidianXXL/issues).
+
 ```
-npm install -g sequelize-cli
+# go to the xxl-api folder within the downloaded project
+cd ObsidianXXL/xxl-api
+
+# run the config command
+npm run setup
+```
+Once the setup starts please read the questions thoroughly. Some questions will have a default answer which should be greyed out and surrounded (with parenthesis). If you hit `Enter` it will default to that. You can run the setup script as many times as you want, such as if you forgot the password, or would like to change options. You can also edit the generated config file later manually.
+
+#### setup.run.Manual Config Setup
+If you are unable to use the above setup command or would just like to do things manually please continue below.
+
+##### Setup Postgres
+Depending on your system you should be able to run `psql` or `sudo -u postgres psql`. If neither of those commands work please let the Obsidian Dev team know and what Operating System you are on. You can also do a quick search for "entering postgres shell on <blah system>".
+
+###### Create User/Role
+```
+# Example:
+# CREATE ROLE <USERNAME> WITH LOGIN PASSWORD '<PASSWORD>';
+CREATE ROLE odn_xxl WITH LOGIN PASSWORD 'secret123';
 ```
 
-## Running / Development
-In order to run this project you will need to make sure your Obsidian-QT GUI wallet is running, or you have the `obsidiand` process running in the background. You will additionally need to make sure you have setup `JSON-RPC` information within your `obsidian.conf` file which will be located in your Obsidian Folder.
+###### Create Database
+```
+# Example:
+# CREATE DATABASE <DB_NAME> OWNER <USERNAME>;
+CREATE DATABASE odn_beta OWNER odn_xxl;
+```
+
+###### Assign User/Role Permissions
+```
+ALTER ROLE odn_xxl WITH LOGIN;
+GRANT ALL PRIVILEGES ON DATABASE odn_beta to odn_xxl;
+```
+
+##### Create the Production Config file
+There is a sample production file: `ObsidianXXL/xxl-api/config/production-sample.json`. You can duplicate that file and rename it to `production.json`. This file contains the information the XXL-API will use to authenticate requests. Please make sure the information in this file matches the information you have entered above when creating a user/role and database.
+
+##### Run Migrations
+Finally, you will need to run migrations. Migrations are essentially informative details about how the database should be configured.
+```
+NODE_ENV=production sequelize db:migrate
+```
+
+### :// Adjust Obsidian Configuration File
+There should be an `obsidian.conf` file you can adjust after running the application for the first time. You will need to adjust the config file to ensure the XXL-API can communicate to your running blockchain node successfully. Since Obsidian is based on Bitcoin/Stratis, you can find the Obsidian folder in the same location as Bitcoin would be.
 - On MacOS, this is found in `~/Library/Application\ Support/ObsidianQT/`.
 - On Ubuntu/Linux, it should be found within `~/.obsidian/`.
+- On Windows, it should be within `App Data` as a hidden folder.
+- [Click here for help finding](https://bitzuma.com/posts/moving-the-bitcoin-core-data-directory/)
 
-#### Obsidian.Conf Setup
-Please make sure you have the following information in your configuration file to ensure this application can communicate with the Obsidian Blockchain running on your machine.
+Please ensure the following information is added to the conf file and saved:
 ```
 server=1
-txindex=1
 rpcuser=me
 rpcpassword=123
 rpcport=8332
 ```
-If you would like to change any of the information above, you will also need to update the JSON-RPC file: `./server/helpers/obsidian.js`.
 
-#### Running Database Migrations
-When you are first setting up you will need to run the Migration files for PostgreSQL which contain the structure of the `odn_alpha1` database:
+## Running
+Please ensure the following steps are done:
+1. The Obsidian Blockchain is running in the background, either as a Wallet App or via the `obsidiand` process.
+2. You have modified the `obsidian.conf` file with specific settings listed above.
+  - *If you have modified your Obsidian Blockchain config file you must reset your application/process first!*
+
+If you are only running the XXL-API for a **production/live environment** then there is nothing else you need to do here! Please continue on with the [XXL README](../README.md) *(which is a lot shorter!)*.
+
+## Development
+<< Section WIP >>
+
+## Commands
+The following are commands available for the XXL-API and must be run within the `xxl-api` folder.
+
+### :// Setup
+Runs through a setup prompt to configure XXL-API for production/live.
 ```
-sequelize db:migrate
-```
-If later on you would like to empty your database, or undo migrations you can run:
-```
-# undo LAST migration
-sequelize db:migrate:undo
-
-# undo ALL migrations
-sequelize db:migrate:undo:all
+npm run setup
 ```
 
-#### Running the API
-To start running the API, execute the command `npm run start` from the application root. By default, debug information will not be shown. If you would like to run the API with debugging on, execute the command `npm run start-debug`.
-
-With the API running, you should now be able to access the test path locally via `http://localhost:3000/ping`. If you see the JSON response with `success` you are good to start crawling the Obsidian Blockchain, so long as your Obsidian-QT wallet or Obsidiand process is caught up or has blocks for you to crawl.
-
-#### API Routes Available
-Currently the API can provide information about a Block height/hash, A Transaction hash, an Address hash, or a general search. Responses will be documented later.
-
-##### Will be added later
-
-## Further Reading / Useful Links
-Here are some useful PSQL (PostgreSQL) commands you can run to inspect the database.
-To use these commands you will need to first connect to the `odn_alpha1` database:
+### :// Migrate
+Migrates the database information and readies the database. **Required** to run after executing `cleanup` as cleanup will remove this information.
 ```
-\connect odn_beta
+npm run migrate
+```
+
+### :// Cleanup
+**Removes** information and migration details from your database. Good for starting over/fresh.
+```
+npm run cleanup
+```
+
+### :// Start
+Runs a **development** version of XXL-API and is available locally on port 4201 by default. Do NOT run this unless you are developing! It is not for production! Please refer to the XXL README for running live!
+```
+npm run start
 ```

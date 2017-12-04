@@ -1,0 +1,8 @@
+{
+  "host": "127.0.0.1",
+  "port": "5432",
+  "dialect": "postgres",
+  "username": "odn_xxl",
+  "password": "secret123",
+  "database": "odn_beta"
+}

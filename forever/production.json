@@ -1,0 +1,8 @@
+{
+    "uid": "obsidian-xxl",
+    "append": true,
+    "watch": false,
+    "script": "server.js",
+    "sourceDir": "./",
+    "workingDir": "./"
+}
