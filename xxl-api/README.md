@@ -41,7 +41,7 @@ sudo apt-get install -y postgresql postgresql-contrib
 ```
 
 ### :// Obsidian Blockchain
-Since the XXL and XXL-API utilize and display information related to your Obsidian Node and the network, the Obsidian Blockchain is a required piee that must be installed and running in the background. You can use the [Obsidian-QT Packaged Release](https://github.com/obsidianproject/Obsidian-Qt/releases) or the binary file `obsidiand` which you can create from the source. If you are setting up `obsidiand` from the source we have guides available on our [Github Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki/Obsidian-QT-%7C-Wiki-of-Obsidian-(ODN)-%E2%80%93-Cryptocurrency-&-Secure-Anonymous-Messaging#installing-obsidiand-source):
+Since the XXL and XXL-API utilize and display information related to your Obsidian Node and the network, the Obsidian Blockchain is a required piece that must be installed and running in the background. You can use the [Obsidian-QT Packaged Release](https://github.com/obsidianproject/Obsidian-Qt/releases) or the binary file `obsidiand` which you can create from the source. If you are setting up `obsidiand` from the source we have guides available on our [Github Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki):
 - [Ubuntu Manual Setup via Wiki](https://github.com/obsidianproject/Obsidian-Qt/wiki/Setting-up-a-VPS-to-stake-your-Obsidian!-~@Pixxl)
     - Explains how to set up a Virtual Private Server *(VPS)* remotely
     - Setup `obsidiand` on Ubuntu 16.04 remotely
@@ -69,7 +69,7 @@ npm install
 
 ## Setting Up
 ### :// Run Config Setup Script
-The XXL-API includes various commands to simplify interactions. One of which is a `setup` command to initialize your XXL-API settings. At this time **Mac OS and Ubuntu** are the only confirmed supported environments to use this interactive script. If you would like for us to support your system please let the Obsidian Dev team know. If you are unable to use this setup command or would just like to do things manually please continue.
+The XXL-API includes various commands to simplify interactions. One of which is a `setup` command to initialize your XXL-API settings. At this time **Mac OS and Ubuntu** are the only confirmed supported environments to use this interactive script. If you would like for us to support your system please let the Obsidian Dev team know or submit a [Github Issue](https://github.com/Manbearpixel/ObsidianXXL/issues).
 
 ```
 # go to the xxl-api folder within the downloaded project
@@ -81,32 +81,40 @@ npm run setup
 Once the setup starts please read the questions thoroughly. Some questions will have a default answer which should be greyed out and surrounded (with parenthesis). If you hit `Enter` it will default to that. You can run the setup script as many times as you want, such as if you forgot the password, or would like to change options. You can also edit the generated config file later manually.
 
 #### setup.run.Manual Config Setup
+If you are unable to use the above setup command or would just like to do things manually please continue below.
+
 ##### Setup Postgres
-Depending on your system you should be able to run `psql` or `sudo -u postgres psql`. If neither of those commands work please let the Obsidian Dev team know and what Operating System you are on. You can also do a quick search for "entering postgres shell on ___".
+Depending on your system you should be able to run `psql` or `sudo -u postgres psql`. If neither of those commands work please let the Obsidian Dev team know and what Operating System you are on. You can also do a quick search for "entering postgres shell on <blah system>".
+
 ###### Create User/Role
 ```
 # Example:
 # CREATE ROLE <USERNAME> WITH LOGIN PASSWORD '<PASSWORD>';
 CREATE ROLE odn_xxl WITH LOGIN PASSWORD 'secret123';
 ```
+
 ###### Create Database
 ```
 # Example:
 # CREATE DATABASE <DB_NAME> OWNER <USERNAME>;
 CREATE DATABASE odn_beta OWNER odn_xxl;
 ```
+
 ###### Assign User/Role Permissions
 ```
 ALTER ROLE odn_xxl WITH LOGIN;
 GRANT ALL PRIVILEGES ON DATABASE odn_beta to odn_xxl;
 ```
+
 ##### Create the Production Config file
 There is a sample production file: `ObsidianXXL/xxl-api/config/production-sample.json`. You can duplicate that file and rename it to `production.json`. This file contains the information the XXL-API will use to authenticate requests. Please make sure the information in this file matches the information you have entered above when creating a user/role and database.
+
 ##### Run Migrations
 Finally, you will need to run migrations. Migrations are essentially informative details about how the database should be configured.
 ```
 NODE_ENV=production sequelize db:migrate
 ```
+
 ### :// Adjust Obsidian Configuration File
 There should be an `obsidian.conf` file you can adjust after running the application for the first time. You will need to adjust the config file to ensure the XXL-API can communicate to your running blockchain node successfully. Since Obsidian is based on Bitcoin/Stratis, you can find the Obsidian folder in the same location as Bitcoin would be.
 - On MacOS, this is found in `~/Library/Application\ Support/ObsidianQT/`.
@@ -124,7 +132,7 @@ rpcport=8332
 
 ## Running
 Please ensure the following steps are done:
-1. The Obsidian Blockchain is running in the background, either as a Wallet App or via the `obsidiand` process. 
+1. The Obsidian Blockchain is running in the background, either as a Wallet App or via the `obsidiand` process.
 2. You have modified the `obsidian.conf` file with specific settings listed above.
   - *If you have modified your Obsidian Blockchain config file you must reset your application/process first!*
 
