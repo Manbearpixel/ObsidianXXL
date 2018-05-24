@@ -1,8 +1,8 @@
 // *** main dependencies *** //
 let express   = require('express');
 let app       = express();
-let api       = require('./xxl-api/api');
-let models    = require('./xxl-api/models');
+// let api       = require('./xxl-api/api');
+// let models    = require('./xxl-api/models');
 let appPort   = normalizePort(process.env.PORT || 3000);
 let debug     = process.env.ODN_DEBUG || false;
 
@@ -27,7 +27,7 @@ function normalizePort(val) {
 }
 
 // *** setup api + webapp *** //
-app.use('/api', api);
+// app.use('/api', api);
 app.use(express.static(public_path));
 
 app.get('*', function(req, res) {
@@ -35,16 +35,17 @@ app.get('*', function(req, res) {
 });
 
 // *** sync database + start server *** //
-models.sequelize.sync().then(function() {
-  server = app.listen(appPort, () => {
-    let addr = server.address();
-    if (typeof addr === 'object') {
-      addr = `${addr.address}:${addr.port}`;
-    }
+// models.sequelize.sync().then(function() {
+// });
 
-    console.log(`ObsidianXXL Listening on ${addr}`);
-    console.log(`Debug Mode :: ${process.env.ODN_DEBUG}`);
-  });
+server = app.listen(appPort, () => {
+  let addr = server.address();
+  if (typeof addr === 'object') {
+    addr = `${addr.address}:${addr.port}`;
+  }
+
+  console.log(`ObsidianXXL Listening on ${addr}`);
+  console.log(`Debug Mode :: ${process.env.ODN_DEBUG}`);
 });
 
 // *** expose server *** //
